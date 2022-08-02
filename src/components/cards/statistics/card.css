@@ -1,0 +1,134 @@
+.m-phase {
+    background-color: #b9f6ca  ;
+
+    
+}
+.phase {
+    background-color: #00e676 ;
+}
+
+.m-courant {
+        background-color: #fff9c4        ;
+}
+
+.courant {
+
+    background-color: #ffee58    ;
+}
+
+.m-temperature {
+
+    background-color: #ffccbc ;
+}
+.temperature {
+   background-color:  #ff7043 ;
+   margin-left: 205%;
+}
+
+.m-humidite {
+
+    background-color: #bbdefb ;
+}
+.humidite {
+
+    background-color: #42a5f5 ;
+    margin-left: 205%;
+}
+
+.m-volume {
+
+    background-color: #b2dfdb ;
+}
+.volume {
+
+    background-color: #26a69a ;
+    margin-left: 205%;
+}
+.debit {
+    background-color: #66bb6a ;
+    margin-left: 205%;
+}
+.m-debit{
+    background-color: #c8e6c9   ;
+}
+
+.m-energie{
+    background-color: #ffff8d ;
+}
+.energie {
+    background-color: #ffea00    ;
+    margin-left: 205%;
+
+}
+.m-tension {
+    background-color: #b9f6ca  ;
+
+    
+}
+.tension {
+    background-color: #00e676 ;
+    margin-left: 205%;
+
+}
+.m-courantem {
+    background-color: #fff9c4 ;
+}
+
+.courantem {
+    background-color: #ffee58 ;
+    margin-left: 205%;
+}
+
+.m-puissancem {
+    background-color: #d1c4e9 ;
+}
+
+.puissancem {
+    background-color: #7e57c2 ;
+    margin-left: 205%;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.card1 {
+
+        background: #ef5350 ;
+        color: 'secondary.A100';
+
+    }
+
+
+.m-card1 { 
+   
+    background-color: #ffcdd2 ;
+
+}
+.card2{
+    color :brown ;
+}
+
+
+
+.card3{
+    color :black ;
+}
+
+.card5{
+    color :chartreuse ;
+}
