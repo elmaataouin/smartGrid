@@ -132,7 +132,6 @@ export default function table() {
       { id: 4, avatar : img1 , lastName: 'Roxie', status: '0',role: '1'},
       { id: 5, avatar : img1 , lastName: 'Snow', status: '0',role: '0' },
       { id: 6, avatar : img1 , lastName: 'Roxie', status: '0',role: '2'},
-      { id: 1, avatar : img1 , lastName: 'Snow', status: '0',role: '1' },
       { id: 7, avatar : img1 , lastName: 'Roxie', status: '0',role: '1'},
       { id: 8, avatar : img1 , lastName: 'Snow', status: '0',role: '0' },
       { id: 9, avatar : img1 , lastName: 'Roxie', status: '0',role: '2'},

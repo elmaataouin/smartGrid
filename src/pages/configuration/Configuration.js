@@ -20,8 +20,13 @@ const Configuration = () => (
         <Card 
         sx = {
             {
-                ml : '150px',
-                mr : '150px'
+                width : {
+                    xs : 470 ,
+                    sm : 800 ,
+                    md : 1300 ,
+                    lg : 1400 ,
+                    xl : 1800 ,    
+                },
             }
         }>
             <CardHeader title="Users list">
