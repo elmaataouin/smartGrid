@@ -140,7 +140,7 @@ const Settings = () => {
                                         <ListItemButton selected={selectedIndex === 0} onClick={(event) => handleListItemClick(event, 1)}>
                                             <ListItemIcon>
                                             <ToolOutlined />
-                                                                                        </ListItemIcon>
+                                                     </ListItemIcon>
                                             <ListItemText primary="Configuration" />
                                         </ListItemButton>
                                      

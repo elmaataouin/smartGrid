@@ -1,0 +1,73 @@
+.userList{
+    
+
+  display: flex ;
+  justify-content: space-between;
+  margin: 50 auto;
+  align-items: center;
+
+}
+.info {
+    display: block;
+    margin-top: 10px;
+    
+}
+
+
+.userListImg{
+    width           : 38px  ;
+    height          : 38px  ;
+    border-radius   : 50%   ;   
+    margin-top: 5px;         
+}
+.userName {
+margin-left: 15px;
+font-size: 15px;
+color: black;
+font-weight: bold;
+}
+.usermail {
+    margin-left: 15px;
+    font-size: 13px;
+    margin-bottom: 7px;
+
+}
+
+.view {
+   
+    border: none;
+    border-radius: 50px;
+    padding:  5px 8px;
+
+    background-color    : #b9f6ca ;
+    color               : #00e676 ; 
+    cursor: pointer;
+    size: 5px;
+    margin-right: 20px; 
+
+}
+
+.delete {
+    border: none;
+    border-radius: 50px;
+    padding:  5px 8px;
+    color : #ef5350;
+    background-color : #ffcdd2;
+    cursor: pointer;
+    size: 5px;
+    margin-right: 20px; 
+}
+
+
+.edit {
+
+    border: none;
+    border-radius: 50px;
+    padding:  5px 8px;
+    color : #42a5f5 ;
+    background-color: #bbdefb    ;
+    cursor: pointer;
+    size: 5px;
+    margin-right: 20px; 
+
+}
