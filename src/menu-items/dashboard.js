@@ -36,7 +36,7 @@ const dashboard = {
             type: 'item',
             url: '/dashboard/default',
             icon: icons.DashboardOutlined,
-            breadcrumbs: false
+            breadcrumbs: true
         },
         {
             id: 'supervision',
@@ -44,7 +44,7 @@ const dashboard = {
             type: 'item',
             url: '/login',
             icon: icons.DesktopMacIcon,
-            breadcrumbs: false
+            breadcrumbs: true
 
 
         },

@@ -10,6 +10,8 @@ const DashboardDefault = Loadable(lazy(() => import('pages/dashboard')));
 // render - sample page
 const SamplePage = Loadable(lazy(() => import('pages/extra-pages/SamplePage')));
 const Configuration = Loadable(lazy(() => import('pages/configuration/Configuration')));
+const Reporting = Loadable(lazy(() => import('pages/reporting/Reporting')));
+
 
 
 // render - utilities
@@ -47,7 +49,13 @@ const MainRoutes = {
         },
         {
             path: 'configuration',
-            element: <Configuration />
+            element: <Configuration />,
+            breadcrumbs: true
+        },
+        {
+            path: 'reporting',
+            element: <Reporting />,
+            breadcrumbs: true
         },
         {
             path: 'shadow',

@@ -191,10 +191,6 @@ const DashboardDefault = () => {
         </Box>
       </Modal>
 
-            <Grid item xs={12} sx={{ mb: -2.25,
-                                     p : 2 }}>
-                <Typography variant="h5">Dashboard</Typography>
-            </Grid>
 
             <Grid item xs={12} sx={{ mb: -1.25,
                                      p : 2 }}>
@@ -379,7 +375,7 @@ const DashboardDefault = () => {
             <Grid item md={8} sx={{ display: { sm: 'none', md: 'block', lg: 'none' } }} />
 
             {/* row 2 */}
-             <Grid item xs={12} md={7} lg={8}>
+{/*              <Grid item xs={12} md={7} lg={8}>
                 <Grid container alignItems="center" justifyContent="space-between">
                     <Grid item>
                         <Typography variant="h5">Unique Visitor</Typography>
@@ -431,9 +427,9 @@ const DashboardDefault = () => {
                     <MonthlyBarChart />
                 </MainCard>
             </Grid> 
-
+ */}
             {/* row 3 */}
-         <Grid item xs={12} md={6} lg={6}>
+          {/*   <Grid item xs={12} md={6} lg={6}>
                 <Grid container alignItems="center" justifyContent="space-between">
                     <Grid item>
                         <Typography variant="h5">Table des utilisateurs</Typography>
@@ -444,7 +440,7 @@ const DashboardDefault = () => {
                     <UsersTable />
                 </MainCard>
             </Grid>
- 
+  */}
             <Grid item xs={12} md={5} lg={12}>
                 <Grid container alignItems="center" justifyContent="space-between">
                     <Grid item>
@@ -473,7 +469,7 @@ const DashboardDefault = () => {
             </Grid> 
 
             {/* row 4 */}
-         <Grid item xs={12} md={7} lg={8}>
+       {/*   <Grid item xs={12} md={7} lg={8}>
                 <Grid container alignItems="center" justifyContent="space-between">
                     <Grid item>
                         <Typography variant="h5">Sales Report</Typography>
@@ -505,8 +501,8 @@ const DashboardDefault = () => {
                     <SalesColumnChart />
                 </MainCard>
             </Grid>
-            
-            <Grid item xs={12} md={5} lg={4}>
+             */}
+          {/*   <Grid item xs={12} md={5} lg={4}>
                 <Grid container alignItems="center" justifyContent="space-between">
                     <Grid item>
                         <Typography variant="h5">Transaction History</Typography>
@@ -626,8 +622,8 @@ const DashboardDefault = () => {
                             Need Help?
                         </Button>
                     </Stack>
-                </MainCard>
-            </Grid> 
+                </MainCard> 
+            </Grid>  */}
              
         </Grid>
     );

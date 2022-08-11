@@ -1,0 +1,17 @@
+.btn {
+
+    border: none;
+    border-radius: 50;
+    padding:  5px 8px;
+    color : #42a5f5 ;
+    background-color: #bbdefb    ;
+    cursor: pointer;
+    size: 5px;
+    margin-right: 20px; 
+
+}
+
+.btn:hover { 
+    filter: brightness(0.8);
+
+}

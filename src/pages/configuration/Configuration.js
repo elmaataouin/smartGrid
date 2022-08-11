@@ -1,5 +1,5 @@
 // material-ui
-import { Typography } from '@mui/material';
+import { Typography , Grid} from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 // project import
 import React from 'react';
@@ -10,69 +10,61 @@ import { Box, Button, Card, CardHeader } from '../../../node_modules/@mui/materi
 import './configuration.css'
 import TextField from '@mui/material/TextField';
 import Table from 'components/Table/Table';
+import SensorTable from 'components/Table/TableDesCapteurs/Table'
+
+
+import AddDialog from '../../components/Modal/addUser/AddDialog';
+import AddDialogCapteur from 'components/Modal/Capteur/addCapteur/AddDialog';
 
 
 const Configuration = () => (
 
     <>
+        <Box  sx={ { width: { xs: 450, sm: 800, md: 1300, lg: 1400, xl: 1400, }, ml: {   xl: "100px" } } }>
+              
+               { /* Users Table */ }
+                <Grid container alignItems="center" justifyContent="space-between"  sx = {{ p: 1, m: 1 }}>
+                    <Grid item>
+                    <Typography variant = "h4">Users Table</Typography>
+                    </Grid>
+                    <Grid item />
+                </Grid>
+
+                <Card>
+                    <Box sx={{ display: 'flex', justifyContent: 'flex-end', p: 1, m: 1,}}>
+                            <TextField sx={{ px: 0.5 }} label="Search" type="search" />
+                            <Button variant="outlined" startIcon={<FileUploadIcon />}>Export</Button>
+                            <AddDialog />
+                    </Box>
+                    {/* <UsersTable /> */}
+                    <Table />
+                </Card>
 
 
-        <Card 
-        sx = {
-            {
-                width : {
-                    xs : 470 ,
-                    sm : 800 ,
-                    md : 1300 ,
-                    lg : 1400 ,
-                    xl : 1800 ,    
-                },
-            }
-        }>
-            <CardHeader title="Users list">
-            </CardHeader>
-            <Card>
-                
-                <Box sx={{
-                     display: 'flex',
-                     justifyContent: 'flex-end',
-                     p: 1,
-                     m: 1,
-                }}>
-                   <TextField  sx = {{ px : 0.5 }}  label="Search" type="search"/>
-                    
-                    <Button variant="outlined" startIcon={<FileUploadIcon />}>
-                        Export
-                    </Button>
 
-                    <Button variant="contained" startIcon={<AddIcon />}>
-                        Add New User
-                    </Button>
-                     
-                </Box>
-                {/* <UsersTable /> */}
-                <Box content={false}
+                { /* Users Table */ }
+                <Grid container alignItems="center" justifyContent="space-between"  sx = {{ p: 1, m: 1 }}>
+                    <Grid item>
+                    <Typography variant = "h4">Sensor table</Typography>
+                    </Grid>
+                    <Grid item />
+                </Grid>
 
-                
-                        sx = {
-
-                            {
-                               
-                                ml : 5 ,
-                                mr : 5 ,
-                                mb : 2 ,
-                                mt : 2 
-                            }
-                        } >
-                <Table/>
-                </Box>
-
-
-               
-            </Card>
-        </Card>
+                <Card>
+                    <Box sx={{ display: 'flex', justifyContent: 'flex-end', p: 1, m: 1,}}>
+                            <TextField sx={{ px: 0.5 }} label="Search" type="search" />
+                            <Button 
+                                sx = {{
+                                    color: '#00c853' ,
+                                    borderColor: '#00c853'
+                                }}
+                                variant="outlined" startIcon={<FileUploadIcon />}>Export</Button>
+                            <AddDialogCapteur />
+                    </Box>
+                    {/* <UsersTable /> */}
+                    <SensorTable />
+                </Card>
+        </Box>
     </>
-
 );
-
 export default Configuration;
