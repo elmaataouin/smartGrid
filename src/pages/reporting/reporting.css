@@ -1,7 +1,25 @@
 .date-filter {
     width: "500px";
 }
-.container {
+
+
+.calendarWrap {
+
+    
+    display: flex;
+    justify-content: flex-end;
+    
+
 }
-.inputBox {
+.iconC {
+    color: #3949ab ;
+    width: 40px;
+    height: 37px;
 }
+
+.divider {
+
+    margin-top    : 15px;
+    margin-bottom : 20px;
+}
+

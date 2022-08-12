@@ -52,9 +52,11 @@ const dashboard = {
             id: 'reporting',
             title: 'Reporting',
             type: 'item',
-            url: '/register',
+            url: '/reporting',
             icon: icons.FileTextOutlined,
-            target: true
+            target: true,
+            breadcrumbs: true
+
         },
         {
             id: 'Statistiques',

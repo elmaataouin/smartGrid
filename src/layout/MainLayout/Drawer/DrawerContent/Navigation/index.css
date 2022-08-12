@@ -1,0 +1,35 @@
+
+.icon {
+
+    margin-left: 20px;
+    font-size: 25px;
+    
+}
+
+.iconChild {
+
+    margin-left: 30px;
+    font-size: 20px;    
+}
+
+.label {
+
+    font-size: 20px;
+    margin-left: 10px;
+    font-family :Verdana, Geneva, Tahoma, sans-serif ;
+}
+
+.labelChild {
+
+    margin-left: 10px;
+    font-family :Verdana, Geneva, Tahoma, sans-serif ;
+    font-size: 15px;
+}
+.ic {
+    margin-left: 10px;
+}
+
+.btn {
+
+    margin-bottom: 10px;
+}
