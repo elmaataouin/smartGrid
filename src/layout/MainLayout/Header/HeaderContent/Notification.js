@@ -17,7 +17,8 @@ import {
     Paper,
     Popper,
     Typography,
-    useMediaQuery
+    useMediaQuery,
+    Link
 } from '@mui/material';
 
 // project import
@@ -193,16 +194,21 @@ const Notification = () => {
                                                 </Typography>
                                             </ListItemSecondaryAction>
                                         </ListItemButton>
-                                        <ListItemButton sx={{ textAlign: 'center', py: `${12}px !important` }}>
+                                        <Link href='/notifications'>
+                                        <ListItemButton sx={{ textAlign: 'center' }}>
                                             <ListItemText
                                                 primary={
+                                                    
                                                     <Typography variant="h6" color="primary">
                                                         View All
                                                     </Typography>
+                                                   
                                                 }
                                             />
                                         </ListItemButton>
+                                        </ Link >
                                     </List>
+
                                 </MainCard>
                             </ClickAwayListener>
                         </Paper>

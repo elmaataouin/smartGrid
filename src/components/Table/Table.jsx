@@ -1,5 +1,5 @@
 import React from 'react'
-import { DataGrid } from '@mui/x-data-grid';
+import { DataGrid , GridToolbar  } from '@mui/x-data-grid';
 import  img1  from '../../assets/images/users/avatar-nassime.jpg'
 import './Table.css'
 import  DeleteSharpIcon  from '@mui/icons-material/DeleteSharp';
@@ -55,6 +55,8 @@ const OrderStatus = ({ status }) => {
   );
 };
 
+
+
 export default function table() {
    
     const columns = [
@@ -67,7 +69,7 @@ export default function table() {
                 
             },
             {   
-                filed : 'img' , 
+                filed : 'userName' , 
                 headerName: 'User',
                 width : 550 ,
                 headerAlign : 'center',
@@ -80,7 +82,7 @@ export default function table() {
                               </div>
                               <div className='info'>
                                 <div className="userName">
-                                  {params.row.lastName}
+                                  {params.row.userName}
                                 </div>
                                 <div className="usermail">
                                   <span>elmaataouin@gmail.com</span>
@@ -141,22 +143,22 @@ export default function table() {
       ];
       
       const rows = [
-      { id: 1, avatar : img1 , lastName: 'EL MAATAOUI Nassime', status: 'Active',role: 0 },
-      { id: 2, avatar : img1 , lastName: 'Roxie', status: 'suspended',role: 2},
-      { id: 3, avatar : img1 , lastName: 'EL MAATAOUI Nassime', status: 'Active',role: 1 },
-      { id: 4, avatar : img1 , lastName: 'Roxie', status: 'suspended',role: 1},
-      { id: 5, avatar : img1 , lastName: 'EL MAATAOUI Nassime', status: 'Active',role: 0 },
-      { id: 6, avatar : img1 , lastName: 'Roxie', status: 'suspended',role: 2},
-      { id: 16, avatar : img1 , lastName: 'EL MAATAOUI Nassime', status: 'Active',role: 1 },
-      { id: 7, avatar : img1 , lastName: 'Roxie', status: 'suspended',role: 1 },
-      { id: 8, avatar : img1 , lastName: 'EL MAATAOUI Nassime', status: 'Active',role: 0 },
-      { id: 9, avatar : img1 , lastName: 'Roxie', status: 'suspended',role: 2},
-      { id: 10, avatar : img1 , lastName: 'EL MAATAOUI Nassime', status: 'suspended',role: 1 },
-      { id: 11, avatar : img1 , lastName: 'Roxie', status: 'suspended',role: 1},
-      { id: 12, avatar : img1 , lastName: 'EL MAATAOUI Nassime', status: 'suspended',role: 0 },
-      { id: 13, avatar : img1 , lastName: 'Roxie', status: 'suspended',role: 2},
-      { id: 14, avatar : img1 , lastName: 'EL MAATAOUI Nassime', status: 'suspended',role: 1 },
-      { id: 15, avatar : img1 , lastName: 'Roxie', status: 'suspended',role: 1},
+      { id: 1, avatar : img1 , userName: 'EL MAATAOUI Nassime', status: 'Active',role: 0 },
+      { id: 2, avatar : img1 , userName: 'Roxie', status: 'suspended',role: 2},
+      { id: 3, avatar : img1 , userName: 'EL MAATAOUI Nassime', status: 'Active',role: 1 },
+      { id: 4, avatar : img1 , userName: 'Roxie', status: 'suspended',role: 1},
+      { id: 5, avatar : img1 , userName: 'EL MAATAOUI Nassime', status: 'Active',role: 0 },
+      { id: 6, avatar : img1 , userName: 'Roxie', status: 'suspended',role: 2},
+      { id: 16, avatar : img1 , userName: 'EL MAATAOUI Nassime', status: 'Active',role: 1 },
+      { id: 7, avatar : img1 , userName: 'Roxie', status: 'suspended',role: 1 },
+      { id: 8, avatar : img1 , userName: 'EL MAATAOUI Nassime', status: 'Active',role: 0 },
+      { id: 9, avatar : img1 , userName: 'Roxie', status: 'suspended',role: 2},
+      { id: 10, avatar : img1 , userName: 'EL MAATAOUI Nassime', status: 'suspended',role: 1 },
+      { id: 11, avatar : img1 , userName: 'Roxie', status: 'suspended',role: 1},
+      { id: 12, avatar : img1 , userName: 'EL MAATAOUI Nassime', status: 'suspended',role: 0 },
+      { id: 13, avatar : img1 , userName: 'Roxie', status: 'suspended',role: 2},
+      { id: 14, avatar : img1 , userName: 'EL MAATAOUI Nassime', status: 'suspended',role: 1 },
+      { id: 15, avatar : img1 , userName: 'Roxie', status: 'suspended',role: 1},
      ];
       
 
@@ -195,6 +197,13 @@ export default function table() {
       disableSelectionOnClick
       columns={columns}
       checkboxSelection 
+      components={{ Toolbar: GridToolbar }}
+      componentsProps={{
+        toolbar: {
+          showQuickFilter: true,
+          quickFilterProps: { debounceMs: 500 },
+        },
+      }}
     />
 
   </div>

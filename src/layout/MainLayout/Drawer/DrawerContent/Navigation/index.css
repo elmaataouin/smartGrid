@@ -6,6 +6,13 @@
     
 }
 
+.lienSide {
+
+    text-decoration: none ;
+    color: black; 
+
+}
+
 .iconChild {
 
     margin-left: 30px;
@@ -24,12 +31,18 @@
     margin-left: 10px;
     font-family :Verdana, Geneva, Tahoma, sans-serif ;
     font-size: 15px;
+    text-decoration: none;
 }
 .ic {
     margin-left: 10px;
 }
 
-.btn {
+.btnSideBar {
 
     margin-bottom: 10px;
+}
+
+.lien {
+    text-decoration: none;
+    color: black;
 }

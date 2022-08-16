@@ -12,7 +12,8 @@ import {
     useMediaQuery,
     ListItemButton, 
     ListItemIcon, 
-    ListItemText
+    ListItemText,
+    Link
 } from '@mui/material';
 
 import SensorsIcon from '@mui/icons-material/Sensors';
@@ -136,14 +137,20 @@ const Settings = () => {
                                             }
                                         }}
                                     >
-                                        
+                                        <Link 
+                                        href="/configuration" 
+                                        style = {{ textDecoration: 'none' , color : 'black' }} 
+
+                                        >
                                         <ListItemButton selected={selectedIndex === 0} onClick={(event) => handleListItemClick(event, 1)}>
                                             <ListItemIcon>
                                             <ToolOutlined />
                                                      </ListItemIcon>
                                             <ListItemText primary="Configuration" />
                                         </ListItemButton>
-                                     
+                                        </Link>
+
+                                       
                                         <ListItemButton selected={selectedIndex === 1} onClick={(event) => handleListItemClick(event, 0)}>
                                             <ListItemIcon>
                                                 <QuestionCircleOutlined />

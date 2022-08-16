@@ -3,14 +3,39 @@ import * as React from 'react';
 
 import Vtabs from 'components/Vtabs/Vtabs';
 
-// project import
 import CapteursTable from './CapteursTable';
+
+
+/* 
 import UsersTable from './UsersTable';
 
 import IncomeAreaChart from './IncomeAreaChart';
 import MonthlyBarChart from './MonthlyBarChart';
 import ReportAreaChart from './ReportAreaChart';
 import SalesColumnChart from './SalesColumnChart';
+
+// assets
+import { GiftOutlined, MessageOutlined, SettingOutlined } from '@ant-design/icons';
+import avatar1 from 'assets/images/users/avatar-1.png';
+import avatar2 from 'assets/images/users/avatar-2.png';
+import avatar3 from 'assets/images/users/avatar-3.png';
+import avatar4 from 'assets/images/users/avatar-4.png';
+
+// material-ui
+import {
+    Avatar,
+    AvatarGroup,
+    Button,
+    List,
+    ListItemAvatar,
+    ListItemButton,
+    ListItemSecondaryAction,
+    ListItemText,
+    MenuItem,
+    Stack,
+    TextField,
+} from '@mui/material'; */
+
 import MainCard from 'components/MainCard';
 import AnalyticEcommerce from 'components/cards/statistics/AnalyticEcommerce';
 
@@ -25,30 +50,9 @@ import WavesIcon from '@mui/icons-material/Waves';
 import BatteryChargingFullIcon from '@mui/icons-material/BatteryChargingFull';
 
 
-// assets
-import { GiftOutlined, MessageOutlined, SettingOutlined } from '@ant-design/icons';
-import avatar1 from 'assets/images/users/avatar-1.png';
-import avatar2 from 'assets/images/users/avatar-2.png';
-import avatar3 from 'assets/images/users/avatar-3.png';
-import avatar4 from 'assets/images/users/avatar-4.png';
+import {  Box, Grid ,Typography} from '@mui/material';
 
-// material-ui
-import {
-    Avatar,
-    AvatarGroup,
-    Box,
-    Button,
-    Grid,
-    List,
-    ListItemAvatar,
-    ListItemButton,
-    ListItemSecondaryAction,
-    ListItemText,
-    MenuItem,
-    Stack,
-    TextField,
-    Typography
-} from '@mui/material';
+
 
 import {
     Link
@@ -122,61 +126,57 @@ const DashboardDefault = () => {
 
     return (
         <Grid container rowSpacing={1.5} columnSpacing={2}>
-            {/* row 1 */}
 
             <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <Box sx={style}>
 
-        {open ? (
-        <IconButton
-          aria-label="close"
-          onClick={handleClose}
-          sx={{
-            position: 'absolute',
-            right: 8,
-            top: 8,
-            color: (theme) => theme.palette.grey[500],
-          }}
-        >
-          <CloseIcon />
-        </IconButton>
-      ) : null}
+                    {open ? (
+                        <IconButton
+                            aria-label="close"
+                            onClick={handleClose}
+                            sx={{
+                                position: 'absolute',
+                                right: 8,
+                                top: 8,
+                                color: (theme) => theme.palette.grey[500],
+                            }}
+                        >
+                            <CloseIcon />
+                        </IconButton>
+                    ) : null}
 
-            
+                    {/* <Box
+                        sx={{
+                            display: 'inline',
+                            flexDirection: 'row-reverse',
+                            p: 1,
+                            m: 1,
+                            bgcolor: 'background.paper',
+                            borderRadius: 1,
+                            margin: '30%'
+                        }}
+                    >
+                        <span>
+                            From :
+                            <input type="date" id="startdate" value="2021-04-01" />
+                        </span>
+                        <span>
+                            To :
+                            <input type="date" id="enddate" value="2021-11-01" />
+                        </span>
+                    </Box> */}
 
-            
-          <Box
-        sx={{
-          display: 'inline',
-          flexDirection: 'row-reverse',
-          p: 1,
-          m: 1,
-          bgcolor: 'background.paper',
-          borderRadius: 1,
-          margin : '30%'
-        }}
-      >
-              <span>
-            From :
-            <input  type="date" id="startdate" value="2021-04-01"/>
-              </span>
-              <span>
-            To : 
-            <input  type="date" id="enddate" value="2021-11-01"/>
-              </span>
-            </Box> 
-
-            <Vtabs dates={dates} />
+                    <Vtabs dates={dates} />
 
 
 
 
-          {/* <Box
+                    {/* <Box
         sx={{
           display: 'flex',
           flexDirection: 'row-reverse',
@@ -188,8 +188,9 @@ const DashboardDefault = () => {
       >
             <Button onClick={handleClose} variant="outlined" color="error">Close modal</Button>
                 </Box> */}
-        </Box>
-      </Modal>
+                </Box>
+
+            </Modal>
 
 
             <Grid item xs={12} sx={{ mb: -1.25,
@@ -625,7 +626,8 @@ const DashboardDefault = () => {
                 </MainCard> 
             </Grid>  */}
              
-        </Grid>
+        </Grid> 
+
     );
 };
 

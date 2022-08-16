@@ -1,5 +1,5 @@
 import React from 'react'
-import { DataGrid } from '@mui/x-data-grid';
+import { DataGrid , GridToolbarContainer, GridToolbarExport , GridToolbar  } from '@mui/x-data-grid';
 import  img1  from 'assets/images/users/avatar-nassime.jpg'
 import './Table.css'
 import  DeleteSharpIcon  from '@mui/icons-material/DeleteSharp';
@@ -7,6 +7,10 @@ import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Dot from 'components/@extended/Dot';
+
+
+import { useDemoData } from '@mui/x-data-grid-generator';
+
 
 import SettingsIcon from '@mui/icons-material/Settings';
 import PersonIcon from '@mui/icons-material/Person';
@@ -117,6 +121,13 @@ export default function table() {
 
      ];
       
+     function CustomToolbar() {
+      return (
+        <GridToolbarContainer>
+          <GridToolbarExport />
+        </GridToolbarContainer>
+      );
+    }
 
  return (
 
@@ -153,8 +164,14 @@ export default function table() {
       disableSelectionOnClick
       columns={columns}
       checkboxSelection 
+      components={{ Toolbar: GridToolbar }}
+      componentsProps={{
+        toolbar: {
+          showQuickFilter: true,
+          quickFilterProps: { debounceMs: 500 },
+        },
+      }}
     />
-
   </div>
         
   )

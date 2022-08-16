@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types';
 import { useRef, useState } from 'react';
 
-// material-ui
+
 import { useTheme } from '@mui/material/styles';
 import {
     Avatar,
     Box,
+    Link,
     ButtonBase,
     CardContent,
     ClickAwayListener,
@@ -163,6 +164,9 @@ const Profile = () => {
                                                         onChange={handleChange}
                                                         aria-label="profile tabs"
                                                     >
+                                                         <Link 
+                                        href="/profiel" 
+                                        style = {{ textDecoration: 'none' , color : 'black' }} >
                                                         <Tab
                                                             sx={{
                                                                 display: 'flex',
@@ -175,7 +179,7 @@ const Profile = () => {
                                                             label="Profile"
                                                             {...a11yProps(0)}
                                                         />
-                                                        
+                                                        </Link>
                                                     </Tabs>
                                                 </Box>
                                                 <TabPanel value={value} index={0} dir={theme.direction}>

@@ -1,15 +1,12 @@
 // material-ui
-import { Box, Typography } from '@mui/material';
+import { Box, Typography , Link} from '@mui/material';
 
-// project import
-import NavGroup from './NavGroup';
-import menuItem from 'menu-items';
+
 import './index.css'
 
 import {
     DashboardOutlined,
-    LoginOutlined,
-    ProfileOutlined,
+
     BarChartOutlined,
     FileTextOutlined
 } from '@ant-design/icons';
@@ -35,26 +32,9 @@ import StarBorder from '@mui/icons-material/StarBorder';
 
 // ==============================|| DRAWER CONTENT - NAVIGATION ||============================== //
 
+
+const style = { textDecoration: 'none' , color : 'black' } ;
 const Navigation = () => {
-
-    /* const navGroups = menuItem.items.map((item) => {
-
-      switch (item.type) {
-            case 'group':
-                return <NavGroup key={item.id} item={item} />;
-            default:
-                return (
-                    <Typography key={item.id} variant="h6" color="error" align="center">
-                        Fix - Navigation Group
-                    </Typography>
-                );
-        } 
-
-        
-    });
-
-    return <Box sx={{ pt: 10 }}>{navGroups}</Box>;
- */
 
     const [open, setOpen] = React.useState(true);
 
@@ -71,15 +51,18 @@ const Navigation = () => {
 
               
             >
-              <ListItemButton className= "btn">
+              <Link   href="/"  style = { style }    >
+
+              <ListItemButton className= "btnSideBar">
                 <ListItemIcon>
                   <DashboardOutlined className = "icon" />
                 </ListItemIcon>
                     <Typography className = "label">Dashboard</Typography>
               </ListItemButton>
+              </Link>
             
 
-              <ListItemButton onClick={handleClick} className= "btn">
+              <ListItemButton onClick={handleClick} className= "btnSideBar">
                 <ListItemIcon>
                   <DesktopMacIcon className = "icon" />
                 </ListItemIcon>
@@ -89,12 +72,19 @@ const Navigation = () => {
               <Collapse in={!open} timeout="auto" unmountOnExit>
 
                 <List component="div" disablePadding>
-                  <ListItemButton sx={{ pl: 4 }}>
+                <Link   href="/reporting"  style = { style }    >
+                    <ListItemButton sx={{ pl: 4 }}>
                     <ListItemIcon className = "iconChild" >
                       <FileTextOutlined />
                     </ListItemIcon>
-                    <Typography className = "labelChild">Reporting</Typography>
+
+                    <Typography sx = {{
+                  textDecoration : "none"
+                }}
+                 className = "labelChild">Reporting</Typography>
                   </ListItemButton>
+                </Link>
+                <Link   href="/statistiques"  style = { style }    >
 
                   <ListItemButton sx={{ pl: 4 }}>
                   <ListItemIcon className = "iconChild" >
@@ -102,32 +92,41 @@ const Navigation = () => {
                     </ListItemIcon>
                     <Typography className = "labelChild">Statistiques</Typography>
                   </ListItemButton>
+                </Link>
                 </List>
 
               </Collapse>
 
-              <ListItemButton className= "btn">
+              <Link   href="/control"  style = { style }    >
+
+              <ListItemButton className= "btnSideBar">
                 <ListItemIcon>
                   <SettingsRemoteIcon className = "icon" />
                 </ListItemIcon>
                     <Typography className = "label">Control</Typography>
               </ListItemButton>
+              </Link>
 
-              <ListItemButton className= "btn">
+              <Link   href="/optimisation"  style = { style }    >
+
+              <ListItemButton className= "btnSideBar">
                 <ListItemIcon>
                   <EnergySavingsLeafIcon className = "icon" />
                 </ListItemIcon>
                     <Typography className = "label">Optimisation</Typography>
               </ListItemButton>
 
+              </Link>  
 
-              <ListItemButton className= "btn">
+              <Link   href="/prediction"  style = { style }    >
+
+              <ListItemButton className= "btnSideBar">
                 <ListItemIcon>
                   <OnlinePredictionIcon className = "icon" />
                 </ListItemIcon>
                     <Typography className = "label">Prédiction</Typography>
               </ListItemButton>
-
+              </Link>
               
             </List>
 
