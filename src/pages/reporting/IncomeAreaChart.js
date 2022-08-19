@@ -41,7 +41,7 @@ const IncomeAreaChart = ({ slot }) => {
     useEffect(() => {
         setOptions((prevState) => ({
             ...prevState,
-            colors: [theme.palette.primary.main, theme.palette.primary[700]],
+            colors:['#00e676','#ff7043','#42a5f5','#ffee58' , '#7e57c2'],
             xaxis: {
                 categories:
                     slot === 'month'
@@ -89,29 +89,29 @@ const IncomeAreaChart = ({ slot }) => {
 
     const [series, setSeries] = useState([
         {
-            name: 'Page Views',
-            data: [0, 86, 28, 115, 48, 210, 136]
+            name: 'phase1',
+            data: [0, 10, 20, 30, 40, 50, 60]
         },
         {
-            name: 'Sessions',
-            data: [0, 43, 14, 56, 24, 105, 68]
-        }
+            name: 'phase2',
+            data: [5, 15, 25, 35, 45, 55, 65]
+        },
+        {
+            name: 'pase3',
+            data: [70, 60, 50, 40, 30, 20, 10]
+        },
+        {
+            name: "Témperature",
+            data: [35, 41, 62, 42, 13, 18, 29]
+        },
+        {
+            name: 'Humidité',
+            data: [87, 57, 74, 99, 75, 38, 62]
+          }
     ]);
 
-    useEffect(() => {
-        setSeries([
-            {
-                name: 'Page Views',
-                data: slot === 'month' ? [76, 85, 101, 98, 87, 105, 91, 114, 94, 86, 115, 35] : [31, 40, 28, 51, 42, 109, 100]
-            },
-            {
-                name: 'Sessions',
-                data: slot === 'month' ? [110, 60, 150, 35, 60, 36, 26, 45, 65, 52, 53, 41] : [11, 32, 45, 32, 34, 52, 41]
-            }
-        ]);
-    }, [slot]);
 
-    return <ReactApexChart options={options} series={series} type="area" height={700}  />;
+    return <ReactApexChart options={options} series={series} type="line" height={700}  />;
 };
 
 IncomeAreaChart.propTypes = {

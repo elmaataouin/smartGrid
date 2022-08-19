@@ -115,8 +115,8 @@ export default function table() {
       
       const rows = [
         { id: 1 , nameSensor : "00-oksa-armoire", date : '10-06-2022 10:55:37', status: 1 , user : "Nassime"},
-        { id: 2 , nameSensor : "00-oksa-armoire", date : '10-06-2022 10:55:37', status: 0 , user : "Nassime"},
-        { id: 3 , nameSensor : "00-oksa-armoire", date : '10-06-2022 10:55:37', status: 1 , user : "Nassime"},
+        { id: 2 , nameSensor : "02-oksa-armoire", date : '10-06-2022 10:55:37', status: 0 , user : "Nassime"},
+        { id: 3 , nameSensor : "01-oksa-armoire", date : '10-06-2022 10:55:37', status: 1 , user : "Nassime"},
 
 
      ];

@@ -2,16 +2,23 @@
 import "./single.css";
 
 import img1 from 'assets/images/users/avatar-nassime.jpg'
-import SensorTable from 'components/Table/TableDesCapteurs/Table'
+import Button from '@mui/material/Button';
+import EditDialog from 'components/Modal/EditUser/EditDialog';
+import ModeEditIcon from '@mui/icons-material/ModeEdit';
+
 
 
 const Profile = () => {
+
+  const row = [  { id: 1, avatar : img1 , userName: 'EL MAATAOUI Nassime', status: 'Active',role: 0 } ]
   return (
     <div className="single">
       <div className="singleContainer">
         <div className="top">
           <div className="left">
-            <div className="editButton">Edit</div>
+        {/* <Button className="editButton" variant="text">Edit</Button> */}
+        <EditDialog icon = {<ModeEditIcon/>} data = { row }/>
+
             <h1 className="title">Information</h1>
             <div className="item">
               <img
@@ -46,11 +53,7 @@ const Profile = () => {
           <div className="right">
           </div>
         </div>
-        <div className="bottom">
-        <h1 className="title">Table capteur</h1>
-        <SensorTable />
-{/*           <List/>
- */}        </div>
+      
       </div>
     </div>
   );

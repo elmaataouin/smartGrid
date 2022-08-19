@@ -66,7 +66,7 @@ export default function EditDialog(props) {
 {
       <Button
         className = "edit"
-        onClick={handleClickOpen} >
+        onClick={handleClickOpen} >Edit
                 {props.icon}
        </Button>}
 

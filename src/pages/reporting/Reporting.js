@@ -6,6 +6,11 @@ import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+
 import BarChartIcon from '@mui/icons-material/BarChart';
 import SsidChartIcon from '@mui/icons-material/SsidChart';
 import MainCard from 'components/MainCard';
@@ -13,6 +18,8 @@ import './reporting.css'
 
 import IncomeAreaChart from './IncomeAreaChart';
 import PieChartIcon from '@mui/icons-material/PieChart';
+
+import PiCharte from 'components/charts/pie/Piechart'
 
 import MonthlyBarChart from 'pages/dashboard/MonthlyBarChart'
 
@@ -108,6 +115,12 @@ const Reporting = () => {
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
+const [sensor, setSensor] = React.useState('');
+
+  const handleChangee = (event) => {
+    setSensor(event.target.value);
+  };
+
 
     return (
         <div>
@@ -143,12 +156,30 @@ const Reporting = () => {
                 <Divider className="divider" />
                 <Grid >
 
+                <Box sx={{ minWidth: 120 }}>
+                    <FormControl 
+                        sx = {{ width  : 300 }}>
+                        <InputLabel id="demo-simple-select-label">Sensors</InputLabel>
+                        <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            value={sensor}
+                            label="sensors"
+                            onChange={handleChangee}
+                            
+                        >
+                            <MenuItem value={10}>01-oksa-armoire</MenuItem>
+                            <MenuItem value={20}>02-oksa-armoire</MenuItem>
+                            <MenuItem value={30}>03-oksa-armoire</MenuItem>
+                        </Select>
+                    </FormControl>
+                </Box>
                     <Box sx={{ width: '100%' }}>
                         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                             <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                                <Tab label="Area Chart" icon = {<SsidChartIcon/>}  {...a11yProps(0)} />
+                                <Tab label="Area Chart" icon={<SsidChartIcon />}  {...a11yProps(0)} />
                                 <Tab label="Bar Chart" icon={<BarChartIcon />} {...a11yProps(1)} />
-                                <Tab label="Pie Chart" icon = { <PieChartIcon/>} {...a11yProps(2)} />
+                                <Tab label="Pie Chart" icon={<PieChartIcon />} {...a11yProps(2)} />
                             </Tabs>
                         </Box>
                         <TabPanel value={value} index={0}>
@@ -158,7 +189,7 @@ const Reporting = () => {
                                 </Grid>
                                 <Grid item>
                                     <Stack direction="row" alignItems="center" spacing={0}>
-                                    <Button
+                                        <Button
                                             size="small"
                                             onClick={() => setSlot('year')}
                                             color={slot === 'year' ? 'primary' : 'secondary'}
@@ -190,7 +221,7 @@ const Reporting = () => {
                                         >
                                             Day
                                         </Button>
-                                        
+
                                     </Stack>
                                 </Grid>
                             </Grid>
@@ -201,28 +232,28 @@ const Reporting = () => {
                             </MainCard>
                         </TabPanel>
                         <TabPanel value={value} index={1}>
-                        <Grid item xs={12} md={5} lg={4}>
-                <Grid container alignItems="center" justifyContent="space-between">
-                    <Grid item>
-                        <Typography variant="h5">Income Overview</Typography>
-                    </Grid>
-                    <Grid item />
-                </Grid>
-                <MainCard sx={{ mt: 2 }} content={false}>
-                    <Box sx={{ p: 3, pb: 0 }}>
-                        <Stack spacing={2}>
-                            <Typography variant="h6" color="textSecondary">
-                                This Week Statistics
-                            </Typography>
-                            <Typography variant="h3">data</Typography>
-                        </Stack>
-                    </Box>
-                    <MonthlyBarChart  />
-                </MainCard>
-            </Grid> 
+                            <Grid item xs={12} md={5} lg={4}>
+                                <Grid container alignItems="center" justifyContent="space-between">
+                                    <Grid item>
+                                        <Typography variant="h5">Income Overview</Typography>
+                                    </Grid>
+                                    <Grid item />
+                                </Grid>
+                                <MainCard sx={{ mt: 2 }} content={false}>
+                                    <Box sx={{ p: 3, pb: 0 }}>
+                                        <Stack spacing={2}>
+                                            <Typography variant="h6" color="textSecondary">
+                                                This Week Statistics
+                                            </Typography>
+                                            <Typography variant="h3">data</Typography>
+                                        </Stack>
+                                    </Box>
+                                    <MonthlyBarChart />
+                                </MainCard>
+                            </Grid>
                         </TabPanel>
                         <TabPanel value={value} index={2}>
-                            Item Three
+                            <PiCharte/>
                         </TabPanel>
                     </Box>
 
