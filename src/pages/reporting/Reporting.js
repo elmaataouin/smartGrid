@@ -3,39 +3,108 @@ import * as React from 'react';
 import { Typography, TextField, Box, Button, Stack, Grid, Divider } from '@mui/material';
 
 import PropTypes from 'prop-types';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
 
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import List from '@mui/material/List';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemText from '@mui/material/ListItemText';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-
-import BarChartIcon from '@mui/icons-material/BarChart';
-import SsidChartIcon from '@mui/icons-material/SsidChart';
+import Tab from 'react-bootstrap/Tab';
+import Tabs from 'react-bootstrap/Tabs';
+import ExpandLess from '@mui/icons-material/ExpandLess';
+import ExpandMore from '@mui/icons-material/ExpandMore'
 import MainCard from 'components/MainCard';
 import './reporting.css'
-
+import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
+import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import Collapse from '@mui/material/Collapse';
+import { styled } from '@mui/material/styles';
+import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker';
+import { PickersDay } from '@mui/x-date-pickers/PickersDay';
 import IncomeAreaChart from './IncomeAreaChart';
-import PieChartIcon from '@mui/icons-material/PieChart';
+import isSameDay from 'date-fns/isSameDay';
+import isWithinInterval from 'date-fns/isWithinInterval';
+import endOfWeek from 'date-fns/endOfWeek';
+import startOfWeek from 'date-fns/startOfWeek';
 
-import PiCharte from 'components/charts/pie/Piechart'
 
 import MonthlyBarChart from 'pages/dashboard/MonthlyBarChart'
 
 import { useEffect, useRef, useState, } from 'react'
 // ==============================|| SAMPLE PAGE ||============================== //
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import { DateRange } from 'react-date-range'
 
-import format from 'date-fns/format'
-import { addDays } from 'date-fns'
 
 
 import 'react-date-range/dist/styles.css'
 import 'react-date-range/dist/theme/default.css'
-
-
+const CustomPickersDay = styled(PickersDay, {
+    shouldForwardProp: (prop) =>
+      prop !== 'dayIsBetween' && prop !== 'isFirstDay' && prop !== 'isLastDay',
+  })(({ theme, dayIsBetween, isFirstDay, isLastDay }) => ({
+    ...(dayIsBetween && {
+      borderRadius: 0,
+      backgroundColor: theme.palette.primary.main,
+      color: theme.palette.common.white,
+      '&:hover, &:focus': {
+        backgroundColor: theme.palette.primary.dark,
+      },
+    }),
+    ...(isFirstDay && {
+      borderTopLeftRadius: '50%',
+      borderBottomLeftRadius: '50%',
+    }),
+    ...(isLastDay && {
+      borderTopRightRadius: '50%',
+      borderBottomRightRadius: '50%',
+    }),
+  }));
+function CustomDay() {
+    const [value, setValue] = React.useState(new Date());
+  
+    const renderWeekPickerDay = (date, selectedDates, pickersDayProps) => {
+      if (!value) {
+        return <PickersDay {...pickersDayProps} />;
+      }
+  
+      const start = startOfWeek(value);
+      const end = endOfWeek(value);
+  
+      const dayIsBetween = isWithinInterval(date, { start, end });
+      const isFirstDay = isSameDay(date, start);
+      const isLastDay = isSameDay(date, end);
+  
+      return (
+        <CustomPickersDay
+          {...pickersDayProps}
+          disableMargin
+          dayIsBetween={dayIsBetween}
+          isFirstDay={isFirstDay}
+          isLastDay={isLastDay}
+        />
+      );
+    };
+  
+    return (
+      <LocalizationProvider dateAdapter={AdapterDateFns}>
+        <StaticDatePicker
+          displayStaticWrapperAs="desktop"
+          label="Week picker"
+          value={value}
+          onChange={(newValue) => {
+            setValue(newValue);
+          }}
+          renderDay={renderWeekPickerDay}
+          renderInput={(params) => <TextField {...params} />}
+          inputFormat="'Week of' MMM d"
+        />
+      </LocalizationProvider>
+    );
+        }
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
 
@@ -69,19 +138,28 @@ function a11yProps(index) {
     };
 }
 
+
+
+
+
 const Reporting = () => {
 
-    const [range, setRange] = useState([
-        {
-            startDate: new Date(),
-            endDate: addDays(new Date(), 7),
-            key: 'selection'
-        }
-    ])
 
     const [slot, setSlot] = useState('week');
 
+    function Charts() {
 
+        return (
+            <Box sx={{ width: '100%' }}>
+                <MainCard content={false} sx={{ mt: 1.5 }}>
+                    <Box sx={{ pt: 1, pr: 2 }}>
+                        <IncomeAreaChart slot={slot} />
+                        <MonthlyBarChart />
+                    </Box>
+                </MainCard>
+            </Box>
+        )
+    }
     // open close
     const [open, setOpen] = useState(false)
 
@@ -111,155 +189,222 @@ const Reporting = () => {
         }
     }
 
+    function NestedList() {
+        const [open, setOpen] = React.useState(true);
+      
+        const handleClick = () => {
+          setOpen(!open);
+        };
+      
+        return (
+          <List
+            sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
+            component="nav"
+            aria-labelledby="nested-list-subheader"
+          >
+            <ListItemButton onClick={handleClick}>
+      
+              <ListItemText primary="week" />
+              {!open ? <ExpandLess /> : <ExpandMore />}
+            </ListItemButton>
+            <Collapse in={!open} timeout="auto" unmountOnExit>
+              <List component="div" disablePadding>
+                <CustomDay />
+              </List>
+            </Collapse>
+          </List>
+        );
+      }
+      
+
     const [value, setValue] = React.useState(0);
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
-const [sensor, setSensor] = React.useState('');
+    const [sensor, setSensor] = React.useState('');
 
-  const handleChangee = (event) => {
-    setSensor(event.target.value);
-  };
+    const handleChangee = (event) => {
+        setSensor(event.target.value);
+    };
 
 
     return (
         <div>
             <MainCard className="container">
-                <Box className="date-filter">
-                    <div className="calendarWrap">
-                        <TextField
-                            lable="date"
-                            value={`${format(range[0].startDate, "MM/dd/yyyy")} to ${format(range[0].endDate, "MM/dd/yyyy")}`}
-                            readOnly
-                            className="inputBox"
-                            onClick={() => setOpen(open => !open)}
-                        />
-                        <CalendarMonthIcon className="iconC" />
-
-                        <div ref={refOne}>
-                            {open &&
-                                <DateRange
-                                    onChange={item => setRange([item.selection])}
-                                    editableDateInputs={true}
-                                    moveRangeOnFirstSelection={false}
-                                    ranges={range}
-                                    months={1}
-                                    direction="horizontal"
-                                    className="calendarElement"
-                                />
-                            }
-                        </div>
-                    </div>
-
-                </Box>
-
                 <Divider className="divider" />
-                <Grid >
-
-                <Box sx={{ minWidth: 120 }}>
-                    <FormControl 
-                        sx = {{ width  : 300 }}>
-                        <InputLabel id="demo-simple-select-label">Sensors</InputLabel>
-                        <Select
-                            labelId="demo-simple-select-label"
-                            id="demo-simple-select"
-                            value={sensor}
-                            label="sensors"
-                            onChange={handleChangee}
-                            
-                        >
-                            <MenuItem value={10}>01-oksa-armoire</MenuItem>
-                            <MenuItem value={20}>02-oksa-armoire</MenuItem>
-                            <MenuItem value={30}>03-oksa-armoire</MenuItem>
-                        </Select>
-                    </FormControl>
-                </Box>
-                    <Box sx={{ width: '100%' }}>
-                        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                            <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                                <Tab label="Area Chart" icon={<SsidChartIcon />}  {...a11yProps(0)} />
-                                <Tab label="Bar Chart" icon={<BarChartIcon />} {...a11yProps(1)} />
-                                <Tab label="Pie Chart" icon={<PieChartIcon />} {...a11yProps(2)} />
-                            </Tabs>
-                        </Box>
-                        <TabPanel value={value} index={0}>
-                            <Grid container alignItems="center" justifyContent="space-between">
-                                <Grid item>
-                                    <Typography variant="h5">Unique Visitor</Typography>
-                                </Grid>
-                                <Grid item>
-                                    <Stack direction="row" alignItems="center" spacing={0}>
-                                        <Button
-                                            size="small"
-                                            onClick={() => setSlot('year')}
-                                            color={slot === 'year' ? 'primary' : 'secondary'}
-                                            variant={slot === 'year' ? 'outlined' : 'text'}
-                                        >
-                                            Year
-                                        </Button>
-                                        <Button
-                                            size="small"
-                                            onClick={() => setSlot('month')}
-                                            color={slot === 'month' ? 'primary' : 'secondary'}
-                                            variant={slot === 'month' ? 'outlined' : 'text'}
-                                        >
-                                            Month
-                                        </Button>
-                                        <Button
-                                            size="small"
-                                            onClick={() => setSlot('week')}
-                                            color={slot === 'week' ? 'primary' : 'secondary'}
-                                            variant={slot === 'week' ? 'outlined' : 'text'}
-                                        >
-                                            Week
-                                        </Button>
-                                        <Button
-                                            size="small"
-                                            onClick={() => setSlot('day')}
-                                            color={slot === 'day' ? 'primary' : 'secondary'}
-                                            variant={slot === 'day' ? 'outlined' : 'text'}
-                                        >
-                                            Day
-                                        </Button>
-
-                                    </Stack>
-                                </Grid>
-                            </Grid>
-                            <MainCard content={false} sx={{ mt: 1.5 }}>
-                                <Box sx={{ pt: 1, pr: 2 }}>
-                                    <IncomeAreaChart slot={slot} />
-                                </Box>
-                            </MainCard>
-                        </TabPanel>
-                        <TabPanel value={value} index={1}>
-                            <Grid item xs={12} md={5} lg={4}>
-                                <Grid container alignItems="center" justifyContent="space-between">
-                                    <Grid item>
-                                        <Typography variant="h5">Income Overview</Typography>
-                                    </Grid>
-                                    <Grid item />
-                                </Grid>
-                                <MainCard sx={{ mt: 2 }} content={false}>
-                                    <Box sx={{ p: 3, pb: 0 }}>
-                                        <Stack spacing={2}>
-                                            <Typography variant="h6" color="textSecondary">
-                                                This Week Statistics
-                                            </Typography>
-                                            <Typography variant="h3">data</Typography>
-                                        </Stack>
-                                    </Box>
-                                    <MonthlyBarChart />
-                                </MainCard>
-                            </Grid>
-                        </TabPanel>
-                        <TabPanel value={value} index={2}>
-                            <PiCharte/>
-                        </TabPanel>
+                <Grid  sx = {
+                    {
+                        mb : 2
+                    }
+                }>
+                    <Box sx={{ minWidth: 120 }}>
+                        <FormControl
+                            sx={{ width: 300 }}>
+                            <InputLabel id="demo-simple-select-label">Sensors</InputLabel>
+                            <Select
+                                labelId="demo-simple-select-label"
+                                id="demo-simple-select"
+                                value={sensor}
+                                label="sensors"
+                                onChange={handleChangee}
+                            >
+                                <MenuItem value={10}>01-oksa-armoire</MenuItem>
+                                <MenuItem value={20}>02-oksa-armoire</MenuItem>
+                                <MenuItem value={30}>03-oksa-armoire</MenuItem>
+                            </Select>
+                        </FormControl>
                     </Box>
-
-
                 </Grid>
 
+                <Tabs defaultActiveKey="day" id="fill-tab-example" className="mb-3">
+
+                        <Tab eventKey="day" title="Day">  
+                                <Box
+                                sx={{
+                                    display: 'flex',
+                                    justifyContent: 'center',
+                                    p: 1,
+                                    m: 1,
+                                    bgcolor: 'background.paper',
+                                    borderRadius: 1,
+                                }}
+
+                                >
+                                <TextField
+                                    id="day"
+                                    label="Day"
+                                    type="date"
+                                    name="day"
+                                    defaultValue="2022-08-22"
+                                    sx={{ width: 220, mr: 4 }}
+                                    InputLabelProps={{
+                                    shrink: true,
+                                    }}
+                                />  
+                                
+                                    
+                                </Box>  
+                                <Charts/>
+                        </Tab>
+
+                        <Tab eventKey="week" title="Week">  
+                        <Box
+                    sx={{
+                      display: 'flex',
+                      justifyContent: 'center',
+                      p: 1,
+                      m: 1,
+                      bgcolor: 'background.paper',
+                      borderRadius: 1,
+                    }}
+                  >
+                    <Button
+                      sx={
+                        {
+                          mr: 1
+                        }
+                      }><ArrowLeftIcon /></Button>
+                    <TextField
+                      id="date"
+                      label="From"
+                      type="date"
+                      defaultValue="2022-08-22"
+                      sx={{ width: 220, mr: 4 }}
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
+                    />
+                    <TextField
+                      id="date"
+                      label="to"
+                      type="date"
+                      defaultValue="2022-08-22"
+                      sx={{ width: 220 }}
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
+
+                    />
+                    <Button sx={
+                      {
+                        ml: 1
+                      }
+                    }><ArrowRightIcon /></Button>
+
+                  </Box>
+
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      justifyContent: 'center'
+                    }}
+                  >
+                    <NestedList />
+
+
+                  </Box>
+
+                        </Tab>
+                
+                        <Tab eventKey="month" title="Month">  
+
+                                        
+                        <Box
+                    sx={{
+                      display: 'flex',
+                      justifyContent: 'center',
+                      p: 1,
+                      m: 1,
+                      bgcolor: 'background.paper',
+                      borderRadius: 1,
+                    }}
+                  >   <LocalizationProvider dateAdapter={AdapterDateFns}>
+                      <Stack spacing={1}>
+                        <DatePicker
+                          views={['year', 'month']}
+                          label="Year only"
+                          value={value}
+                          onChange={(newValue) => {
+                            setValue(newValue);
+                          }}
+                          renderInput={(params) => <TextField {...params} helperText={null} />}
+                        />
+                      </Stack>
+                    </LocalizationProvider>
+                  </Box>
+
+                        </Tab>
+
+                        <Tab eventKey="year" title="Year">  
+                                        
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      justifyContent: 'center',
+                      p: 1,
+                      m: 1,
+                      bgcolor: 'background.paper',
+                      borderRadius: 1,
+                    }}
+                  >    <LocalizationProvider dateAdapter={AdapterDateFns}>
+                      <Stack spacing={3}>
+                        <DatePicker
+                          views={['year']}
+                          label="Year only"
+                          value={value}
+                          onChange={(newValue) => {
+                            setValue(newValue);
+                          }}
+                          renderInput={(params) => <TextField {...params} helperText={null} />}
+                        />
+                      </Stack>
+                    </LocalizationProvider>
+                  </Box>
+                        </Tab>
+                </Tabs>
+
+               
+                
             </MainCard>
         </div>
     )

@@ -4,6 +4,7 @@ import { lazy } from 'react';
 import Loadable from 'components/Loadable';
 import MainLayout from 'layout/MainLayout';
 import { element } from 'prop-types';
+import { Support } from '../../node_modules/@mui/icons-material/index';
 
 
 
@@ -24,7 +25,7 @@ const Profiel = Loadable(lazy(() => import('pages/Profile/Profile')));
 
 const Notifications = Loadable(lazy(() => import('pages/Notifications/Notifications')));
 
-
+const Supporte = Loadable(lazy(() => import('pages/Support/Support')));
 
 
 // render - utilities
@@ -99,6 +100,12 @@ const MainRoutes = {
         {
             path : 'notifications',
             element : <Notifications />,
+            breadcrumbs : true
+
+        },
+        {
+            path : 'support',
+            element : <Supporte/>,
             breadcrumbs : true
 
         },

@@ -79,7 +79,7 @@ export default function EditDialog() {
         open={open}
       >
         <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
-        Add User
+        Add Sensor
         </BootstrapDialogTitle>
         <DialogContent dividers>
 

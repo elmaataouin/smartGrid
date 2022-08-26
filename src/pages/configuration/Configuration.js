@@ -32,7 +32,7 @@ const Configuration = () => (
 
                 <Card>
                     <Box sx={{ display: 'flex', justifyContent: 'flex-end', p: 1, m: 1,}}>
-                            <TextField sx={{ px: 0.5 }} label="Search" type="search" />
+                            {/* <TextField sx={{ px: 0.5 }} label="Search" type="search" /> */}
                             <Button variant="outlined" startIcon={<FileUploadIcon />}>Export</Button>
                             <AddDialog />
                     </Box>
@@ -52,7 +52,7 @@ const Configuration = () => (
 
                 <Card>
                     <Box sx={{ display: 'flex', justifyContent: 'flex-end', p: 1, m: 1,}}>
-                            <TextField sx={{ px: 0.5 }} label="Search" type="search" />
+                            {/* <TextField sx={{ px: 0.5 }} label="Search" type="search" /> */}
                             <Button 
                                 sx = {{
                                     color: '#00c853' ,

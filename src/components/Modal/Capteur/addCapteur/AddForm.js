@@ -53,7 +53,7 @@ const AddForm = () => {
 
     const [role, setrole] = React.useState('');
     const [status, seStatus] = React.useState('');
-    const [profile,setProfile] = React.useState('');
+    const [profile, setProfile] = React.useState('');
 
 
     const handleChangeR = (event) => {
@@ -106,159 +106,61 @@ const AddForm = () => {
             >
                 {({ errors, handleBlur, handleChange, handleSubmit, isSubmitting, touched, values }) => (
                     <form noValidate onSubmit={handleSubmit}>
-                        <Grid container spacing={3}>
+                        <Grid container spacing={2}
+                            sx={{
+                                display: 'flex',
+                                alignItems: 'flex-start',
+                                flexDirection: 'column',
+                            }}>
 
-                            <Grid item xs={12}>
-                                <Stack  alignItems="center" spacing={1}>                                
-                                    <Avatar
-                                        alt="Remy Sharp"
-                                        src={img1}
-                                        sx={{ width: 70, height: 70 }}
-                                    >
-                                <input hidden accept="image/*" type="file" />
-                                    </Avatar>
-                                    <IconButton color="primary" aria-label="upload picture" component="label">
-                                        <input hidden accept="image/*" type="file" />
-                                        <PhotoCamera />
-                                    </IconButton>
-                                </Stack>
-                            </Grid>
 
-                            <Grid item xs={12}>
+                            <Grid item >
                                 <Stack spacing={1}>
-                                    <InputLabel htmlFor="name-signup">Name*</InputLabel>
+                                    <InputLabel htmlFor="rf_id">rf_ID</InputLabel>
                                     <OutlinedInput
                                         fullWidth
-                                        id="name-login"
-                                        type="name"
-                                        value={values.name}
-                                        name="name"
+                                        id="rf_id"
+                                        type="id"
                                         onBlur={handleBlur}
                                         onChange={handleChange}
-                                        placeholder="EL MAATAOUI Nassime"
+                                        placeholder="id"
                                         error={Boolean(touched.name && errors.name)}
                                     />
-                                    {touched.name && errors.name && (
-                                        <FormHelperText error id="helper-text-name-signup">
-                                            {errors.name}
-                                        </FormHelperText>
-                                    )}
                                 </Stack>
                             </Grid>
 
-                            <Grid item xs={12}>
+                            <Grid item >
                                 <Stack spacing={1}>
-                                    <InputLabel htmlFor="email-signup">Email Address*</InputLabel>
+                                    <InputLabel htmlFor="name">Name</InputLabel>
                                     <OutlinedInput
                                         fullWidth
                                         error={Boolean(touched.email && errors.email)}
-                                        id="email-login"
-                                        type="email"
+                                        id="name_sensor"
                                         value={values.email}
-                                        name="email"
                                         onBlur={handleBlur}
                                         onChange={handleChange}
-                                        placeholder="elmaataouin@gmail.com"
+                                        placeholder="Namem"
                                         inputProps={{}}
                                     />
-                                    {touched.email && errors.email && (
-                                        <FormHelperText error id="helper-text-email-signup">
-                                            {errors.email}
-                                        </FormHelperText>
-                                    )}
                                 </Stack>
                             </Grid>
 
-
-                            <Grid item xs={12}>
+                            <Grid item >
                                 <Stack spacing={1}>
-                                    <InputLabel id="role" htmlFor="role-signup">Role*</InputLabel>
-                                    <Select
-                                        labelId="role"
-                                        id="role"
-                                        onChange={handleChangeR}
-                                        autoWidth
-                                        defaultValue={10}
-                                        xs={12}
-                                    >
-                                        <MenuItem value={10}>Admin</MenuItem>
-                                        <MenuItem value={21}>User</MenuItem>
-                                        <MenuItem value={22}>Super-User</MenuItem>
-                                    </Select>
-                                </Stack>
-                            </Grid>
-
-
-                            <Grid item xs={12}>
-                                <Stack spacing={1}>
-                                    <InputLabel id="status" htmlFor="status-signup">Status*</InputLabel>
-                                    <Select
-                                        labelId="status"
-                                        id="status"
-                                        onChange={handleChangeS}
-                                        autoWidth
-                                        defaultValue={10}
-                                    >
-                                        <MenuItem value="">
-                                        </MenuItem>
-                                        <MenuItem value={10}>Active</MenuItem>
-                                        <MenuItem value={21}>suspended</MenuItem>
-                                    </Select>
-                                </Stack>
-                            </Grid>
-
-
-
-                            <Grid item xs={12}>
-                                <Stack spacing={1}>
-                                    <InputLabel htmlFor="password-signup">Password</InputLabel>
+                                    <InputLabel htmlFor="email-signup">Node</InputLabel>
                                     <OutlinedInput
                                         fullWidth
-                                        error={Boolean(touched.password && errors.password)}
-                                        id="password-signup"
-                                        type={showPassword ? 'text' : 'password'}
-                                        value={values.password}
-                                        name="password"
+                                        error={Boolean(touched.email && errors.email)}
+                                        id="node"
+                                        value={values.email}
                                         onBlur={handleBlur}
-                                        onChange={(e) => {
-                                            handleChange(e);
-                                            changePassword(e.target.value);
-                                        }}
-                                        endAdornment={
-                                            <InputAdornment position="end">
-                                                <IconButton
-                                                    aria-label="toggle password visibility"
-                                                    onClick={handleClickShowPassword}
-                                                    onMouseDown={handleMouseDownPassword}
-                                                    edge="end"
-                                                    size="large"
-                                                >
-                                                    {showPassword ? <EyeOutlined /> : <EyeInvisibleOutlined />}
-                                                </IconButton>
-                                            </InputAdornment>
-                                        }
-                                        placeholder="******"
+                                        onChange={handleChange}
+                                        placeholder="node"
                                         inputProps={{}}
                                     />
-                                    {touched.password && errors.password && (
-                                        <FormHelperText error id="helper-text-password-signup">
-                                            {errors.password}
-                                        </FormHelperText>
-                                    )}
                                 </Stack>
-                                <FormControl fullWidth sx={{ mt: 2 }}>
-                                    <Grid container spacing={2} alignItems="center">
-                                        <Grid item>
-                                            <Box sx={{ bgcolor: level?.color, width: 85, height: 8, borderRadius: '7px' }} />
-                                        </Grid>
-                                        <Grid item>
-                                            <Typography variant="subtitle1" fontSize="0.75rem">
-                                                {level?.label}
-                                            </Typography>
-                                        </Grid>
-                                    </Grid>
-                                </FormControl>
                             </Grid>
+
 
 
                             {errors.submit && (
@@ -266,7 +168,6 @@ const AddForm = () => {
                                     <FormHelperText error>{errors.submit}</FormHelperText>
                                 </Grid>
                             )}
-
 
                             <Grid item xs={12}>
                                 <AnimateButton>
@@ -279,7 +180,7 @@ const AddForm = () => {
                                         variant="contained"
                                         color="primary"
                                     >
-                                        Add User
+                                        Add Sensor
                                     </Button>
                                 </AnimateButton>
                             </Grid>

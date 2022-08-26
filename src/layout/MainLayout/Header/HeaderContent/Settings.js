@@ -150,13 +150,18 @@ const Settings = () => {
                                         </ListItemButton>
                                         </Link>
 
-                                       
+                                        <Link 
+                                        href="/support" 
+                                        style = {{ textDecoration: 'none' , color : 'black' }} 
+
+                                        >
                                         <ListItemButton selected={selectedIndex === 1} onClick={(event) => handleListItemClick(event, 0)}>
                                             <ListItemIcon>
                                                 <QuestionCircleOutlined />
                                             </ListItemIcon>
                                             <ListItemText primary="Support" />
                                         </ListItemButton>
+                                    </Link>
                                     </List>
                                 </MainCard>
                             </ClickAwayListener>
