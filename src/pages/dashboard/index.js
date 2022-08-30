@@ -79,9 +79,11 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
       backgroundColor: "#bce6ff",
       color: theme.palette.common.black,
+      width : '400px'
     },
     [`&.${tableCellClasses.body}`]: {
       fontSize: 14,
+
 
     },
   }));
@@ -416,16 +418,18 @@ const DashboardDefault = () => {
                     component={Paper}
                     style={{
                       boxShadow: "0px 13px 20px 0px #80808029", height: "500px",
-                      width : "100%"
                       // overflow: "scroll",
                     }}
+                    sx={{
+                        width: '100%',
+                        overflowX: 'auto',
+                        position: 'relative',
+                        display: 'block',
+                        maxWidth: '100%',
+                        '& td, & th': { whiteSpace: 'nowrap' }
+                    }}
                   >
-                    <Table stickyHeader aria-label="customized table"
-                    sx = {
-                        {
-
-                        }
-                    } >
+                    <Table stickyHeader aria-label="customized table">
                       <TableHead>
                         <TableRow>
                           <StyledTableCell>Nom</StyledTableCell>

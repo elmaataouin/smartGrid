@@ -178,6 +178,16 @@ const Statistiques = () => {
     setPeriodList(list)
   }
 
+
+
+
+
+
+
+
+
+
+
   const theme = useTheme();
   const [personName, setPersonName] = React.useState([]);
 
@@ -469,21 +479,6 @@ const Statistiques = () => {
 
             </Container>
           </Tab>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
           <Tab eventKey="ComparaisonParCapteurs" title="Comparaison par capteurs">
             <MultiSesnor />
