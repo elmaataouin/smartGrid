@@ -30,7 +30,7 @@ const areaChartOptions = {
 
 // ==============================|| INCOME AREA CHART ||============================== //
 
-const IncomeAreaChart = ({ slot }) => {
+const IncomeAreaChart = ({  }) => {
     const theme = useTheme();
 
     const { primary, secondary } = theme.palette.text;
@@ -43,10 +43,6 @@ const IncomeAreaChart = ({ slot }) => {
             ...prevState,
             colors:['#00e676','#ff7043','#42a5f5','#ffee58' , '#7e57c2'],
             xaxis: {
-                categories:
-                    slot === 'month'
-                        ? ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-                        : ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
                 labels: {
                     style: {
                         colors: [
@@ -69,7 +65,7 @@ const IncomeAreaChart = ({ slot }) => {
                     show: true,
                     color: line
                 },
-                tickAmount: slot === 'month' ? 11 : 7
+                
             },
             yaxis: {
                 labels: {
@@ -85,7 +81,7 @@ const IncomeAreaChart = ({ slot }) => {
                 theme: 'light'
             }
         }));
-    }, [primary, secondary, line, theme, slot]);
+    }, [primary, secondary, line, theme]);
 
     const [series, setSeries] = useState([
         {
@@ -114,8 +110,5 @@ const IncomeAreaChart = ({ slot }) => {
     return <ReactApexChart options={options} series={series} type="line" height={700}  />;
 };
 
-IncomeAreaChart.propTypes = {
-    slot: PropTypes.string
-};
 
 export default IncomeAreaChart;

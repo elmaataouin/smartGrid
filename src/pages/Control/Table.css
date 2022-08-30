@@ -1,0 +1,126 @@
+.userList{
+    
+
+  display: flex ;
+  justify-content: space-between;
+  margin: 50 auto;
+  align-items: center;
+  justify-content: center;
+
+}
+.info {
+    display: block;
+    margin-top: 10px;
+    
+}
+
+.rolee {
+    display: flex ;
+    justify-content: space-between;
+    margin: 50 auto;
+    margin-left: 30px;
+
+
+}
+.rolee .title {
+
+    margin-left: 10px;
+
+}
+
+
+.status-Active {
+    padding: 5px;
+    margin-left: 70px;
+    border-radius: 5px;
+    color: green;
+    background-color: rgba(0, 128, 0, 0.151);
+  }
+.status-suspended {
+    padding: 5px;
+    border-radius: 5px;
+    margin-left: 55px;
+    color: #ff3d00 ;
+    background-color: #ff9e80 ;
+
+  }
+
+
+.userListImg{
+    width           : 40px  ;
+    height          : 42px  ;
+    border-radius   : 60%   ;   
+    margin-top: 8px;         
+}
+.userName {
+margin-left: 15px;
+font-size: 15px;
+color: black;
+font-weight: bold;
+}
+.usermail {
+    margin-left: 15px;
+    font-size: 13px;
+    margin-bottom: 7px;
+
+}
+
+
+
+.view:hover  { 
+    filter: brightness(0.8);
+}
+
+.delete:hover { 
+    filter: brightness(0.8);
+
+}
+
+.view {
+   
+    border: none;
+    border-radius: 50px;
+    padding:  5px 8px;
+
+    
+
+    background-color: #b9f6ca ;
+    color : #00e676 ;
+    cursor: pointer;
+    size: 5px;
+    margin-right: 20px; 
+
+}
+.Action {
+    margin-left: 50px;
+    display: flex;
+}
+.delete {
+    border: none;
+    border-radius: 50px;
+    padding:  5px 8px;
+    color : #ef5350;
+    background-color : #ffcdd2;
+    cursor: pointer;
+    size: 5px;
+    margin-right: 20px; 
+}
+
+
+.edit {
+
+    border: none;
+    border-radius: 50px;
+    padding:  5px 8px;
+    color : #42a5f5 ;
+    background-color: #bbdefb    ;
+    cursor: pointer;
+    size: 5px;
+    margin-right: 20px; 
+
+}
+
+.edit:hover { 
+    filter: brightness(0.8);
+
+}
