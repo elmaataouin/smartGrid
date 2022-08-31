@@ -8,11 +8,10 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
-import EditForm from './EditForm'
+import ConfigForm from './ConfigForm'
 import AddIcon from '@mui/icons-material/Add';
 import './edit.css'
 import Typography from '@mui/material/Typography';
-import { PropaneSharp } from '../../../../node_modules/@mui/icons-material/index';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
@@ -52,7 +51,7 @@ BootstrapDialogTitle.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-export default function EditDialog(props) {
+export default function ConfigDialog(props) {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -66,7 +65,7 @@ export default function EditDialog(props) {
 {
       <Button
         className = "edit"
-        onClick={handleClickOpen} >Edit
+        onClick={handleClickOpen} >
                 {props.icon}
        </Button>}
 
@@ -81,13 +80,13 @@ export default function EditDialog(props) {
 
       >
         <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
-        Edit Atelier
+        Edit Sensor
         </BootstrapDialogTitle>
         <DialogContent dividers>
 
 
 
-              <EditForm 
+              <ConfigForm 
                 data1 = { props.data }/>
 
 

@@ -8,11 +8,10 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
-import EditForm from './EditForm'
+import AddForm from './AddForm'
 import AddIcon from '@mui/icons-material/Add';
-import './edit.css'
+
 import Typography from '@mui/material/Typography';
-import { PropaneSharp } from '../../../../node_modules/@mui/icons-material/index';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
@@ -52,43 +51,41 @@ BootstrapDialogTitle.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-export default function EditDialog(props) {
+export default function EditDialog() {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
-    setOpen(true);   };
+    setOpen(true);
+  };
   const handleClose = () => {
     setOpen(false);
   };
 
   return (
     <div>
-{
-      <Button
-        className = "edit"
-        onClick={handleClickOpen} >Edit
-                {props.icon}
-       </Button>}
-
-
-
-
-
+      <Button variant="contained"  
+              onClick={handleClickOpen} 
+              sx = {
+                {
+                  bgcolor : "#00c853"
+                }
+              }
+              startIcon={<AddIcon />}>
+                Add New Atelier
+       </Button>
       <BootstrapDialog
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"
         open={open}
-
       >
         <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
-        Edit Atelier
+        Add Atelier
         </BootstrapDialogTitle>
         <DialogContent dividers>
 
 
 
-              <EditForm 
-                data1 = { props.data }/>
+              <AddForm/>
 
 
          

@@ -43,7 +43,7 @@ import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
 
 
 
-const EditForm = (props) => {
+const AddForm = () => {
     const [level, setLevel] = useState();
     const [showPassword, setShowPassword] = useState(false);
     const handleClickShowPassword = () => {
@@ -53,7 +53,7 @@ const EditForm = (props) => {
 
     const [role, setrole] = React.useState('');
     const [status, seStatus] = React.useState('');
-    const [profile,setProfile] = React.useState('');
+    const [profile, setProfile] = React.useState('');
 
 
     const handleChangeR = (event) => {
@@ -106,7 +106,7 @@ const EditForm = (props) => {
             >
                 {({ errors, handleBlur, handleChange, handleSubmit, isSubmitting, touched, values }) => (
                     <form noValidate onSubmit={handleSubmit}>
-                            <Grid container spacing={2}
+                        <Grid container spacing={2}
                             sx={{
                                 display: 'flex',
                                 alignItems: 'flex-start',
@@ -135,11 +135,11 @@ const EditForm = (props) => {
                                     <OutlinedInput
                                         fullWidth
                                         error={Boolean(touched.email && errors.email)}
-                                        id="name"
+                                        id="atelier"
                                         value={values.email}
                                         onBlur={handleBlur}
                                         onChange={handleChange}
-                                        placeholder="atelier"
+                                        placeholder="Namem"
                                         inputProps={{}}
                                     />
                                 </Stack>
@@ -180,7 +180,7 @@ const EditForm = (props) => {
                                         variant="contained"
                                         color="primary"
                                     >
-                                        Edit Atelier
+                                        Add Atelier
                                     </Button>
                                 </AnimateButton>
                             </Grid>
@@ -193,4 +193,4 @@ const EditForm = (props) => {
     );
 };
 
-export default EditForm;
+export default AddForm;

@@ -168,16 +168,49 @@ const Statistiques = () => {
 
   const [periodList, setPeriodList] = useState([{ day: "" }]);
 
+  const [weekList, seetWeekList] = useState([{ week : "" }]);
+  const [monthList, setMonthList] = useState([{ month: "" }]);
+  const [yearList, setYearList] = useState([{ year: "" }]);
+
+
   const handlesPeriodeAdd = () => {
     setPeriodList([...periodList, { day: "" }])
   }
-
   const handlesPeriodeRmv = (index) => {
     const list = [...periodList]
     list.splice(index, 1);
     setPeriodList(list)
   }
 
+
+  const handlesWeekeAdd = () => {
+    seetWeekList([...weekList, { week: "" }])
+  }
+  const handlesWeekRmv = (index) => {
+    const list = [...weekList]
+    list.splice(index, 1);
+    seetWeekList(list)
+  }
+
+
+
+  const handlesMontheAdd = () => {
+    setMonthList([...monthList, { month: "" }])
+  }
+  const handlesMonthRmv = (index) => {
+    const list = [...monthList]
+    list.splice(index, 1);
+    setMonthList(list)
+  }
+
+  const handlesYearheAdd = () => {
+    setYearList([...yearList, { year: "" }])
+  }
+  const handlesYearRmv = (index) => {
+    const list = [...yearList]
+    list.splice(index, 1);
+    setYearList(list)
+  }
 
 
 
@@ -323,19 +356,31 @@ const Statistiques = () => {
                   </Box>
 
                 </Tab>
+
                 <Tab eventKey="week" title="Week">
 
-                  <Box
-                    sx={{
-                      display: 'flex',
-                      justifyContent: 'center',
-                      p: 1,
-                      m: 1,
-                      bgcolor: 'background.paper',
-                      borderRadius: 1,
-                    }}
-                  >
-                    <Button
+
+                {
+                    weekList.map((oneYear, index) => (
+                      <>
+
+                      <Box
+                          sx={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                            p: 1,
+                            m: 1,
+                            bgcolor: 'background.paper',
+                            borderRadius: 1,
+                          }}
+
+                          key={index} className="days"
+
+                        >
+
+                        <div id = "week">
+
+                        <Button
                       sx={
                         {
                           mr: 1
@@ -368,9 +413,7 @@ const Statistiques = () => {
                       }
                     }><ArrowRightIcon /></Button>
 
-                  </Box>
-
-                  <Box
+                    {/*   <Box
                     sx={{
                       display: 'flex',
                       justifyContent: 'center'
@@ -379,7 +422,38 @@ const Statistiques = () => {
                     <NestedList />
 
 
-                  </Box>
+                  </Box> */}
+
+
+                        </div>
+
+
+{weekList.length > 1 && (
+                            <Button variant="danger"
+                              onClick={() => handlesWeekRmv(index)}
+                              style={{ marginRight: 10 }}
+                            ><ClearIcon /></Button>
+
+                          )
+                          }
+                          {monthList.length - 1 == index && monthList.length < 4 && (
+
+                            <Button onClick={handlesWeekeAdd}><AddIcon /></Button>
+
+
+
+                          )
+                          }
+
+                      </Box>
+                      </>
+                    ))
+                }
+                <div className="d-grid gap-2">
+                    <Button variant="primary" size="lg">
+                      Comparer      </Button>
+
+                  </div>
 
                   <LineChart />
 
@@ -396,7 +470,13 @@ const Statistiques = () => {
                   </Box>
 
                 </Tab>
+
+
                 <Tab eventKey="month" title="Month">
+
+                {
+                    monthList.map((oneYear, index) => (
+                      <>
 
                   <Box
                     sx={{
@@ -407,7 +487,8 @@ const Statistiques = () => {
                       bgcolor: 'background.paper',
                       borderRadius: 1,
                     }}
-                  >   <LocalizationProvider dateAdapter={AdapterDateFns}>
+                    key={index}
+                  >   <LocalizationProvider dateAdapter={AdapterDateFns}       id="month"                  >
                       <Stack spacing={1}>
                         <DatePicker
                           views={['year', 'month']}
@@ -420,7 +501,36 @@ const Statistiques = () => {
                         />
                       </Stack>
                     </LocalizationProvider>
-                  </Box>
+                   { monthList.length > 1 && (
+                            <Button variant="danger"
+                              onClick={() => handlesMonthRmv(index)}
+                              style={{ marginRight: 10 }}
+                            ><ClearIcon /></Button>
+
+                          )
+                          }
+                          {monthList.length - 1 == index && monthList.length < 4 && (
+
+                            <Button onClick={handlesMontheAdd}><AddIcon /></Button>
+
+
+
+                          )
+                          }
+
+                        </Box>
+
+                      </>
+
+                    ))
+
+                  }
+                  <div className="d-grid gap-2">
+                    <Button variant="primary" size="lg">
+                      Comparer      </Button>
+
+                  </div>
+
                   <LineChart />
 
                   <Box
@@ -435,8 +545,11 @@ const Statistiques = () => {
 
                   </Box>
                 </Tab>
-                <Tab eventKey="year" title="Yaer">
+                <Tab eventKey="year" title="Year">
 
+                {
+                    yearList.map((oneYear, index) => (
+                      <>
                   <Box
                     sx={{
                       display: 'flex',
@@ -446,7 +559,9 @@ const Statistiques = () => {
                       bgcolor: 'background.paper',
                       borderRadius: 1,
                     }}
-                  >    <LocalizationProvider dateAdapter={AdapterDateFns}>
+                    key={index} 
+                  >  
+                    <LocalizationProvider dateAdapter={AdapterDateFns} id = "year">
                       <Stack spacing={3}>
                         <DatePicker
                           views={['year']}
@@ -459,7 +574,36 @@ const Statistiques = () => {
                         />
                       </Stack>
                     </LocalizationProvider>
-                  </Box>
+                    {yearList.length > 1 && (
+                            <Button variant="danger"
+                              onClick={() => handlesYearRmv(index)}
+                              style={{ marginRight: 10 }}
+                            ><ClearIcon /></Button>
+
+                          )
+                          }
+                          {yearList.length - 1 == index && yearList.length < 4 && (
+
+                            <Button onClick={handlesYearheAdd}><AddIcon /></Button>
+
+
+                            )
+                          }
+
+                        </Box>
+
+                      </>
+
+                    ))
+
+                  }
+<div className="d-grid gap-2">
+                    <Button variant="primary" size="lg">
+                      Comparer      </Button>
+
+                  </div>
+
+                 
                   <LineChart />
 
                   <Box
@@ -493,12 +637,6 @@ const Statistiques = () => {
 
 
               <Tab eventKey="day" title="Day">
-
-
-
-
-
-
 
                 <Box
                   sx={{
@@ -659,7 +797,7 @@ const Statistiques = () => {
 
                 </Box>
               </Tab>
-              <Tab eventKey="year" title="Yaer">
+              <Tab eventKey="year" title="Year">
 
                 <Box
                   sx={{

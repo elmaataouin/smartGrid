@@ -12,7 +12,6 @@ import EditForm from './EditForm'
 import AddIcon from '@mui/icons-material/Add';
 import './edit.css'
 import Typography from '@mui/material/Typography';
-import { PropaneSharp } from '../../../../node_modules/@mui/icons-material/index';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
@@ -81,7 +80,7 @@ export default function EditDialog(props) {
 
       >
         <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
-        Edit User
+        Edit Capteur
         </BootstrapDialogTitle>
         <DialogContent dividers>
 

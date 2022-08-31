@@ -66,7 +66,7 @@ export default function EditDialog(props) {
 {
       <Button
         className = "edit"
-        onClick={handleClickOpen} >Edit
+        onClick={handleClickOpen} >
                 {props.icon}
        </Button>}
 
@@ -81,7 +81,7 @@ export default function EditDialog(props) {
 
       >
         <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
-        Edit Atelier
+        Edit User
         </BootstrapDialogTitle>
         <DialogContent dividers>
 

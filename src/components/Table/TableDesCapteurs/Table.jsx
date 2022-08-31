@@ -15,7 +15,7 @@ import { useDemoData } from '@mui/x-data-grid-generator';
 import SettingsIcon from '@mui/icons-material/Settings';
 import PersonIcon from '@mui/icons-material/Person';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
-import EditDialog from 'components/Modal/EditUser/EditDialog';
+import EditDialog from 'components/Modal/Capteur/editCapteur/EditDialog';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { Typography , Stack }  from '@mui/material';
 
